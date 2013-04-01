@@ -1,4 +1,4 @@
-$().ready(function () {
+$(window).load(function () {
     var scrollContent = $(".thumb-wrap"),
         slideImage = $(".slide-image");
     $.ajax({
@@ -30,9 +30,11 @@ $().ready(function () {
             if (localStorage) {
                 if (localStorage.img) {
                     slideImage.prop("src", localStorage.img).css({"margin-top":-slideImage.height() / 2, "margin-left":-slideImage.width() / 2})
+
                 }
                 else {
                     slideImage.prop("src", data['entries'][0]['img']['L']['href']).css({"margin-top":-slideImage.height() / 2, "margin-left":-slideImage.width() / 2});
+
                 }
                 if (localStorage.thumbActive){
                     $(".thumb li:eq("+localStorage.thumbActive+")").addClass("active");
@@ -64,7 +66,7 @@ $().ready(function () {
         $(".next, .prev").show();
     }).mouseout(function () {
             $(".next, .prev").hide();
-    })
+        })
     $(".next").click(function () {
         $(".slide-image")
             .prop("src", $(".thumb .active").next().find("a").prop("href"))
